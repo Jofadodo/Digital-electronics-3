@@ -14,7 +14,7 @@
    1. EXE 2.1
    1. EXE 2.2
    
-This link will redirect you to your BUT e-learning,where you can submit your project. [VUT BR](https://vutbr.cz).
+This link will redirect you to your BUT e-learning,where you can submit your project. [VUT BR](https://www.edaplayground.com/x/YDCa).
 
 Name         |    Age
 ------------ | -------------
