@@ -12,4 +12,6 @@ end architecture dataflow;
 
 
 **Link na EDA PLAYGROUND - prvá funkcia**
-[EDA PLAYGROUND](https://www.edaplayground.com/x/YDCa).
+
+[EDA PLAYGROUND]
+(https://www.edaplayground.com/x/YDCa).
