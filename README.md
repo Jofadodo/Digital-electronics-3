@@ -27,8 +27,4 @@ Jana         | 15
 git status
 git add
 git commit
-<<<<<<< HEAD
 ```
-=======
-```
->>>>>>> 7b77b012e39ea039555694c8fcce5df04dfc315c
