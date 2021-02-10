@@ -9,6 +9,7 @@ begin
 end architecture dataflow;
 ```
 
+![FUNCKIA 1](Images/example.png)
 
 
 **Link na EDA PLAYGROUND - prvá funkcia**
