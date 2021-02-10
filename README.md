@@ -1,4 +1,4 @@
-# Digital-electronics-1
+## Digital-electronics-1
 
 *This course is startup in learning VHDL*
 
@@ -20,3 +20,9 @@ Name         |    Age
 ------------ | -------------
 Igor         | 20
 Jana         | 15
+
+``` vhdl
+git status
+git add
+git commit
+```
