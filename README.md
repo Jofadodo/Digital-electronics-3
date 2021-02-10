@@ -21,7 +21,7 @@ Name         |    Age
 Igor         | 20
 Jana         | 15
 
-``` vhdl
+```vhdl
 git status
 git add
 git commit
