@@ -1,12 +1,10 @@
 ## Digital-electronics-1
 
    
-This link will redirect you to your BUT e-learning,where you can submit your project. [VUT BR](https://www.edaplayground.com/x/YDCa).
+This link will redirect you to my Playground.[PLAYGROUND](https://www.edaplayground.com/x/YDCa)
 
-Name         |    Age
------------- | -------------
-Igor         | 20
-Jana         | 15
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
 
 ```vhdl
 architecture dataflow of gates is
