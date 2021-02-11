@@ -2,7 +2,7 @@
 
 **Link na môj EDA PLAYGROUND**
 
-[EDA PLAYGROUND](https://www.edaplayground.com/x/YDCa).
+[DEMORGANOWE ZÁKONY](https://www.edaplayground.com/x/YDCa).
 
 ## Prvá funkcia
    
@@ -84,10 +84,10 @@ end architecture dataflow;
 
 **Link na môj EDA PLAYGROUND**
 
-[EDA PLAYGROUND](https://www.edaplayground.com/x/WwFg)
+[DISTRIBUČNÉ ZÁKONY](https://www.edaplayground.com/x/WwFg)
 
 ![FUNCKIA 3](Images/distributivelaws.png)
 
-*Ako môžeme vidieť z obrázka funckia 1 sa rovná funkcií 2 a funkcia 3 sa rovná funkcii 4 - potvrdili sme distribučné zákony.
+*Ako môžeme vidieť z obrázka funckia 1 sa rovná funkcií 2 a funkcia 3 sa rovná funkcii 4 - potvrdili sme distribučné zákony.*
 
 
