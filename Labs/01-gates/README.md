@@ -86,6 +86,8 @@ end architecture dataflow;
 
 [DISTRIBUČNÉ ZÁKONY](https://www.edaplayground.com/x/WwFg)
 
+**VHDL CODE**
+
 ```vhdl
 architecture dataflow of gates is
 begin
