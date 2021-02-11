@@ -86,6 +86,15 @@ end architecture dataflow;
 
 [DISTRIBUČNÉ ZÁKONY](https://www.edaplayground.com/x/WwFg)
 
+```vhdl
+architecture dataflow of gates is
+begin
+    f_o      <= ((not b_i) and a_i) or ((not c_i) and (not b_i));
+    f_nand_o <= not (not (not b_i and a_i) and not(not c_i and not b_i));
+    f_nor_o  <= not(b_i or not a_i) or not (c_i or b_i);
+end architecture dataflow;
+```
+
 ![FUNCKIA 3](Images/distributivelaws.png)
 
 *Ako môžeme vidieť z obrázka funckia 1 sa rovná funkcií 2 a funkcia 3 sa rovná funkcii 4 - potvrdili sme distribučné zákony.*
