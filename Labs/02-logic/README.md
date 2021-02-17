@@ -48,25 +48,26 @@ use ieee.std_logic_1164.all;
 ------------------------------------------------------------------------
 entity comparator_2bit is
     port(
-        a_i           : in  std_logic_vector(4 - 1 downto 0);--Data A
-        b_i           : in  std_logic_vector(4 - 1 downto 0);--Data B
-        B_greater_A_o : out std_logic;      -- B is greater than A
-        B_equals_A_o  : out std_logic;      -- B equals A
-        B_less_A_o    : out std_logic       -- B is less than A
+        a_i             : in  std_logic_vector(4 - 1 downto 0); -- A data
+	b_i			    : in  std_logic_vector(4 - 1 downto 0); -- B data
+       	B_equals_A_o    : out std_logic;      -- B equals to A
+	B_greater_A_o   : out std_logic;      -- B is greater than A
+        B_less_A_o      : out std_logic       -- B is less than A
     );
 end entity comparator_2bit;
 
 ------------------------------------------------------------------------
--- Architecture body for 4-bit binary comparator
+-- Architecture body for 2-bit binary comparator
 ------------------------------------------------------------------------
 architecture Behavioral of comparator_2bit is
 begin
-    B_greater_A_o <= '1' when (b_i > a_i) else '0';
-    B_equals_A_o  <= '1' when (b_i = a_i) else '0';
-    B_less_A_o    <= '1' when (b_i < a_i) else '0';
+        B_greater_A_o <= '1' when (b_i > a_i) else '0';
+	B_equals_A_o  <= '1' when (b_i = a_i) else '0';
+	B_less_A_o    <= '1' when (b_i < a_i) else '0';
 
 
-end architecture Behavioral;
+  end architecture Behavioral;
+
 ```
 
 **VHDL TESTBENCH**
@@ -106,8 +107,8 @@ architecture testbench of tb_comparator_2bit is
     signal s_B_less_A    : std_logic;
 
 begin
-    -- Connecting testbench signals with comparator_4bit entity (Unit Under Test)
-    uut_comparator_4bit : entity work.comparator_2bit
+    -- Connecting testbench signals with comparator_2bit entity (Unit Under Test)
+    uut_comparator_2bit : entity work.comparator_2bit
         port map(
             a_i           => s_a,
             b_i           => s_b,
@@ -121,77 +122,100 @@ begin
     --------------------------------------------------------------------
     p_stimulus : process
     begin
-     -- Report a note at the begining of stimulus process
+        -- Report a note at the begining of stimulus process
         report "Stimulus process started" severity note;
 
-		s_b <= "0011"; s_a <= "0101"; wait for 100 ns;
+        s_b <= "0000"; s_a <= "1100"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 0101" severity error;
+		report "Test failed for input combination: 0000, 1100" severity error;
 
-		s_b <= "0011"; s_a <= "0110"; wait for 100 ns;
+		s_b <= "0000"; s_a <= "1101"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 0110" severity error;
+		report "Test failed for input combination: 0000, 1101" severity error;
 
-		s_b <= "0011"; s_a <= "0111"; wait for 100 ns;
+		s_b <= "0000"; s_a <= "1110"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 0111" severity error;
+		report "Test failed for input combination: 0000, 1110" severity error;
 
-		s_b <= "0011"; s_a <= "1000"; wait for 100 ns;
+		s_b <= "0000"; s_a <= "1111"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1000" severity error;
+		report "Test failed for input combination: 0000, 1111" severity error;
 
-		s_b <= "0011"; s_a <= "1001"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0000"; wait for 100 ns;
+		assert ((s_B_greater_A = '1') and (s_B_equals_A = '0') and (s_B_less_A = '0'))
+		report "Test failed for input combination: 0001, 0000" severity error;
+
+		s_b <= "0001"; s_a <= "0001"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '0'))
+		report "Test failed for input combination: 0001, 0001" severity error;
+
+		s_b <= "0001"; s_a <= "0010"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1001" severity error;
+		report "Test failed for input combination: 0001, 0010" severity error;
 
-		s_b <= "0011"; s_a <= "1010"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0011"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1010" severity error;
+		report "Test failed for input combination: 0001, 0011" severity error;
 
-		s_b <= "0011"; s_a <= "1011"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0100"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1011" severity error;
+		report "Test failed for input combination: 0001, 0100" severity error;
 
-		s_b <= "0011"; s_a <= "1100"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0101"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1100" severity error;
+		report "Test failed for input combination: 0001, 0101" severity error;
 
-		s_b <= "0011"; s_a <= "1101"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0110"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1101" severity error;
+		report "Test failed for input combination: 0001, 0110" severity error;
 
-		s_b <= "0011"; s_a <= "1110"; wait for 100 ns;
+		s_b <= "0001"; s_a <= "0111"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0011, 1110" severity error;
+		report "Test failed for input combination: 0001, 0111" severity error;
 
-		s_b <= "0011"; s_a <= "1111"; wait for 100 ns;
-		assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '1')) --Zámerná chyba
-		report "Test failed for input combination: 0011, 1111" severity error; 
+		s_b <= "0001"; s_a <= "1000"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
+		report "Test failed for input combination: 0001, 1000" severity error;
+
+		s_b <= "0001"; s_a <= "1001"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
+		report "Test failed for input combination: 0001, 1001" severity error;
+
+		s_b <= "0001"; s_a <= "1010"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
+		report "Test failed for input combination: 0001, 1010" severity error;
+
+		s_b <= "0001"; s_a <= "1011"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '0') and (s_B_less_A = '1'))
+		report "Test failed for input combination: 0001, 1011" severity error;
+
+		s_b <= "0001"; s_a <= "1100"; wait for 100 ns;
+		assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '1'))
+		report "Test failed for input combination: 0001, 1101" severity error;
 
         -- Report a note at the end of stimulus process
-       report "Stimulus process finished" severity note;
+        report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;
 
 end architecture testbench;
-
 ```
 **CONSOLE OUTPUT** 
 
 ```vhdl
-[2021-02-17 14:29:50 EST] ghdl -i design.vhd testbench.vhd  && ghdl -m  tb_comparator_2bit && ghdl -r  tb_comparator_2bit   --vcd=dump.vcd && sed -i 's/^U/X/g; s/^-/X/g; s/^H/1/g; s/^L/0/g' dump.vcd 
+[2021-02-17 14:52:23 EST] ghdl -i design.vhd testbench.vhd  && ghdl -m  tb_comparator_2bit && ghdl -r  tb_comparator_2bit   --vcd=dump.vcd && sed -i 's/^U/X/g; s/^-/X/g; s/^H/1/g; s/^L/0/g' dump.vcd 
 analyze design.vhd
 analyze testbench.vhd
 elaborate tb_comparator_2bit
 testbench.vhd:51:9:@0ms:(report note): Stimulus process started
-testbench.vhd:94:16:@1100ns:(assertion error): Test failed for input combination: 0011, 1111
-testbench.vhd:98:8:@1100ns:(report note): Stimulus process finished
+testbench.vhd:118:16:@1700ns:(assertion error): Test failed for input combination: 0001, 1101
+testbench.vhd:122:9:@1700ns:(report note): Stimulus process finished
 Finding VCD file...
 ./dump.vcd
-[2021-02-17 14:29:51 EST] Opening EPWave...
+[2021-02-17 14:52:23 EST] Opening EPWave...
 Done
 ```
 
-**LINK NA EDA PLAYGROUND **
+**LINK NA EDA PLAYGROUND**
 
 [4-bitový komparátor](https://www.edaplayground.com/x/qp4c).
