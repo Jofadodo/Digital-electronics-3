@@ -98,7 +98,7 @@ begin
 end architecture dataflow;
 ```
 
-![FUNCKIA 3](Images/distributivelaws.png)
+![DISTRZAK](Images/distributivelaws.png)
 
 *Ako môžeme vidieť z obrázka funckia 1 sa rovná funkcií 2 a funkcia 3 sa rovná funkcii 4 - potvrdili sme distribučné zákony.*
 
