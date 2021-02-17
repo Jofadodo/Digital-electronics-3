@@ -1,18 +1,6 @@
-# Cvicenie 2
+# Cvičenie 2
 
-**Link na môj EDA PLAYGROUND**
-
-[CVICENIE 2](https://www.edaplayground.com/x/YDCa).
-   
-**VHDL CODE**
-
-```vhdl
-
-```
-
-![FUNCKIA 1](Images/funkcia.png)
-
-
+**Tabuľka pravidivostných hodnôt**
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0 0 | 0 0 | 0 | 1 | 0 |
@@ -32,4 +20,28 @@
 | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
 | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
+##2-bitový komparátor 
 
+![Truth_Table](Images/truth_table.png)
+
+##4-bitový binárny komparátor
+
+**VHDL CODE**
+
+```vhdl
+
+```
+
+**VHDL TESTBENCH**
+
+```vhdl
+
+```
+**CONSOLE OUTPUT** 
+
+```vhdl
+
+```
+
+**LINK NA EDA PLAYGROUND **
+[4-bitový komparátor](https://www.edaplayground.com/x/qp4c).
