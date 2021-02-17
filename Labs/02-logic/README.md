@@ -20,11 +20,11 @@
 | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
 | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
-##2-bitový komparátor 
+## 2-bitový komparátor 
 
 ![Truth_Table](Images/truth_table.png)
 
-##4-bitový binárny komparátor
+## 4-bitový binárny komparátor
 
 **VHDL CODE**
 
