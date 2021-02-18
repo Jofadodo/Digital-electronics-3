@@ -22,7 +22,7 @@
 
 ## 2-bitový komparátor 
 
-![Truth_Table](Images/truth_table.png)
+![Truth_Table](Images/truth_table.jpg)
 
 ## 4-bitový binárny komparátor
 
@@ -215,6 +215,8 @@ Finding VCD file...
 [2021-02-17 14:52:23 EST] Opening EPWave...
 Done
 ```
+
+![vystup](Images/screen.png)
 
 **LINK NA EDA PLAYGROUND**
 
