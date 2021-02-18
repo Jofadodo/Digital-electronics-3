@@ -203,16 +203,16 @@ end architecture testbench;
 **CONSOLE OUTPUT** 
 
 ```vhdl
-[2021-02-17 14:52:23 EST] ghdl -i design.vhd testbench.vhd  && ghdl -m  tb_comparator_2bit && ghdl -r  tb_comparator_2bit   --vcd=dump.vcd && sed -i 's/^U/X/g; s/^-/X/g; s/^H/1/g; s/^L/0/g' dump.vcd 
+[2021-02-18 06:07:39 EST] ghdl -i design.vhd testbench.vhd  && ghdl -m  tb_comparator_2bit && ghdl -r  tb_comparator_2bit   --vcd=dump.vcd && sed -i 's/^U/X/g; s/^-/X/g; s/^H/1/g; s/^L/0/g' dump.vcd 
 analyze design.vhd
 analyze testbench.vhd
 elaborate tb_comparator_2bit
 testbench.vhd:51:9:@0ms:(report note): Stimulus process started
-testbench.vhd:118:16:@1700ns:(assertion error): Test failed for input combination: 0001, 1101
+testbench.vhd:118:16:@1700ns:(assertion error): Test failed for input combination: 0001, 1100
 testbench.vhd:122:9:@1700ns:(report note): Stimulus process finished
 Finding VCD file...
 ./dump.vcd
-[2021-02-17 14:52:23 EST] Opening EPWave...
+[2021-02-18 06:07:41 EST] Opening EPWave...
 Done
 ```
 
