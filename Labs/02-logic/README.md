@@ -191,7 +191,7 @@ begin
 
 		s_b <= "0001"; s_a <= "1100"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '1'))
-		report "Test failed for input combination: 0001, 1101" severity error;
+		report "Test failed for input combination: 0001, 1100" severity error;
 
         -- Report a note at the end of stimulus process
         report "Stimulus process finished" severity note;
