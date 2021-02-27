@@ -1,6 +1,6 @@
 # Cvičenie 3
 
-##Table with connection of 16 slide switches and 16 LEDs on Nexys A7 board.
+## Table with connection of 16 slide switches and 16 LEDs on Nexys A7 board.
 
 | **LED** | **Connection** | **Switch** | **Connection** | 
 | :-: | :-: | :-: | :-: |
@@ -63,6 +63,6 @@ end architecture testbench;
 
 ![simulacia](Images/simulation.png)
 
-##VIVADO TUTORIAL
+## VIVADO TUTORIAL
 
 
