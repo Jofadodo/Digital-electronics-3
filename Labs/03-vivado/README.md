@@ -71,7 +71,7 @@ end architecture testbench;
 ![START](Images/openingvivado.png)
 
 2.Click on Create Project in the Start Menu as shown below.
-![NEW](Images/newproject.png)
+![NEW](Images/newproject.png =250x250)
 
 The new window will pop up.
 ![NEW2](Images/newwindow.png)
