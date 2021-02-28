@@ -98,6 +98,7 @@ You succesfully created new project!
 ## ADDING DESIGN,TESTBENCH AND XDC FILE
 
 1.Click on add sources as shown below.
+
 ![sources](Images/sources.png)
 
 2.Choose "Add or create design sources" and click next.
