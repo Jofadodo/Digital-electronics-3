@@ -125,7 +125,7 @@ end process p_7seg_decoder;
 end testbench;
 ```
 
-[!SIMULACIA](Images/simulacia.png)
+![SIMULACIA](Images/simulacia.png)
 
 ## VHDL code from source file top.vhd 
 
