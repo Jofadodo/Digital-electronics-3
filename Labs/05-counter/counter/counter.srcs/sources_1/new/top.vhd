@@ -1,76 +1,24 @@
-# Cvičenie 5
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 10.03.2021 11:34:46
+-- Design Name: 
+-- Module Name: top - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
-| **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
-| :-: | :-: | :-: | :-: |
-| 2&nbsp;ms | 200 000 | `x"3_0d40"` | `b"0011_0000_1101_0100_0000"` |
-| 4&nbsp;ms | 400 000 | `x"6_1a80"` | `b"0110_0001_1010_1000_0000"` |
-| 10&nbsp;ms|1 000 000 | `x"f_4240"` | `b"1111_0100_0010_0100_0000"` |
-| 250&nbsp;ms |25 000 000 | `x"17d_7840"` | `b"0001_0111_1101_0111_1000_0100_0000"` |
-| 500&nbsp;ms |50 000 000 | `x"2fa_f080"` | `b"0010_1111_1010_1111_0000_1000_0000"` |
-| 1&nbsp;sec | 100 000 000 | `x"5f5_e100"` | `b"0101_1111_0101_1110_0001_0000_0000"` |
 
-![buttons](Images/buttons.png)
-
-## Bidirectional counter - DESIGN 
-
-```vhdl
-p_cnt_up_down : process(clk)
-    begin
-     if rising_edge(clk) then
-        
-            if (reset = '1') then               -- Synchronous reset
-                s_cnt_local <= (others => '0'); -- Clear all bits
-
-            elsif (en_i= '1') then
-            
-            if (cnt_up_i = '1' )  then
-                 s_cnt_local <= s_cnt_local + 1;
-                else
-            s_cnt_local <= s_cnt_local - 1;
-               end if; 
-
-            end if;
-        end if;
-    end process p_cnt_up_down;
-```
-
-## Bidirectional counter - TESTBENCH RESET
-
-```vhdl
-p_reset_gen : process
-    begin
-        s_reset <= '0';
-        wait for 12 ns;
-        s_reset <= '1';                 -- Reset activated
-        wait for 73 ns;
-        s_reset <= '0';
-        wait;
-    end process p_reset_gen;
-
-```
-## Bidirectional counter - TESTBENCH STIMULUS
-```vhdl
- p_stimulus : process
-    begin
-        report "Stimulus process started" severity note;
-
-        s_en     <= '1';                -- Enable counting
-        s_cnt_up <= '1';
-        wait for 380 ns;                -- Change counter direction
-        s_cnt_up <= '0';
-        wait for 220 ns;
-        s_en     <= '0';                -- Disable counting
-
-        report "Stimulus process finished" severity note;
-        wait;
-   end process p_stimulus;
-```vhdl
-
-![SIMULACIA](Images/simulacia1.png)
-
-## Top level - SOURCE
-
-```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -158,5 +106,3 @@ begin
     AN <= b"1111_1110";
 
 end architecture Behavioral;
-```
-

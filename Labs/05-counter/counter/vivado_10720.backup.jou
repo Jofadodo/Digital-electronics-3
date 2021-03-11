@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar 10 19:45:02 2021
+# Process ID: 10720
+# Current directory: C:/Dominik/Digital-electronics-1/Labs/05-counter/counter
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7880 C:\Dominik\Digital-electronics-1\Labs\05-counter\counter\counter.xpr
+# Log file: C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/vivado.log
+# Journal file: C:/Dominik/Digital-electronics-1/Labs/05-counter/counter\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.xpr
+launch_simulation
+source tb_cnt_up_down.tcl
+close_sim
