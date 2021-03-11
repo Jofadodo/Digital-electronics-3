@@ -64,7 +64,7 @@ p_reset_gen : process
         report "Stimulus process finished" severity note;
         wait;
    end process p_stimulus;
-```vhdl
+```
 
 ![SIMULACIA](Images/simulacia1.png)
 
