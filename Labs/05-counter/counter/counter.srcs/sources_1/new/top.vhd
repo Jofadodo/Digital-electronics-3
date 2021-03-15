@@ -35,7 +35,7 @@ entity top is
 
     Port ( CLK100MHZ : in STD_LOGIC;
            BTNC : in STD_LOGIC;
-           BTNB : in STD_LOGIC;
+           BTND : in STD_LOGIC;
            SW : in STD_LOGIC_VECTOR (1 downto 0);
            LED : out STD_LOGIC_VECTOR (15 downto 0);
            CA : out STD_LOGIC;
@@ -103,7 +103,7 @@ begin
         port map(
            
             clk => CLK100MHZ,
-            reset => BTNB,
+            reset => BTND,
             ce_o => s_en16
         );
 
@@ -116,7 +116,7 @@ begin
         )
         port map(
             clk   =>CLK100MHZ,
-            reset =>BTNB,
+            reset =>BTND,
             en_i  => s_en16,
             cnt_up_i => SW(1),
             cnt_o  => s_cnt16

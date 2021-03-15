@@ -4,7 +4,7 @@ Nov 18 2020
 09:47:47
 C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sim_1/new/tb_clock_enable.vhd,1615369357,vhdl,,,,tb_clock_enable,,,,,,,,
 C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sim_1/new/tb_cnt_up_down.vhd,1615370124,vhdl,,,,tb_cnt_up_down,,,,,,,,
-C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/clock_enable.vhd,1615368359,vhdl,C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sim_1/new/tb_clock_enable.vhd,,,clock_enable,,,,,,,,
-C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/cnt_up_down.vhd,1615399684,vhdl,C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sim_1/new/tb_cnt_up_down.vhd;C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,,,cnt_up_down,,,,,,,,
+C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/clock_enable.vhd,1615368359,vhdl,C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,,,clock_enable,,,,,,,,
+C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/cnt_up_down.vhd,1615399684,vhdl,C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,,,cnt_up_down,,,,,,,,
 C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/hex_7seg.vhd,1615034944,vhdl,C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,,,hex_7seg,,,,,,,,
-C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,1615381540,vhdl,,,,top,,,,,,,,
+C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.srcs/sources_1/new/top.vhd,1615807727,vhdl,,,,top,,,,,,,,
