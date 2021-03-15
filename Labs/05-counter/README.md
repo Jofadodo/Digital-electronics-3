@@ -68,7 +68,7 @@ p_reset_gen : process
 
 ![SIMULACIA](Images/simulacia1.png)
 
-## Top level - SOURCE
+## Top level - SOURCE 4bit
 
 ```vhdl
 library IEEE;
@@ -159,4 +159,5 @@ begin
 
 end architecture Behavioral;
 ```
+![PHOTO](Images/IMG.png)
 
