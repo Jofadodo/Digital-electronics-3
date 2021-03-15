@@ -159,5 +159,5 @@ begin
 
 end architecture Behavioral;
 ```
-![PHOTO](Images/IMG.png)
+![PHOTO](Images/IMG.jpg)
 
