@@ -31,7 +31,7 @@
 }
 ```
 
-![Waveform](img/waveform.png)
+![Waveform](Images/waveform.png)
 
 
 # DISPLAY DRIVER VHDL SOURCE CODE - p_mux
