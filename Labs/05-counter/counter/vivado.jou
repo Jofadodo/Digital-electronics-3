@@ -11,3 +11,6 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Dominik/Digital-electronics-1/Labs/05-counter/counter/counter.xpr
+launch_simulation
+source tb_cnt_up_down.tcl
+close_sim
