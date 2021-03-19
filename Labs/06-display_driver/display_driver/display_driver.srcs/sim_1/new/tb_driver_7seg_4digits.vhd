@@ -70,7 +70,7 @@ begin
     --------------------------------------------------------------------
     p_clk_gen : process
     begin
-        while now < 750 ns loop         -- 75 periods of 100MHz clock
+        while now < 750ns loop         -- 75 periods of 100MHz clock
             s_clk_100MHz <= '0';
             wait for c_CLK_100MHZ_PERIOD / 2;
             s_clk_100MHz <= '1';
@@ -85,9 +85,9 @@ begin
      p_reset_gen : process
     begin
         s_reset <= '0';
-        wait for 12 ns;
+        wait for 10 ns;
         s_reset <= '1';                 -- Reset activated
-        wait for 73 ns;
+        wait for 50 ns;
         s_reset <= '0';
         wait;
     end process p_reset_gen;
@@ -102,22 +102,10 @@ begin
         s_data2  <= "0001";
         s_data1  <= "0100";  
         s_data0  <= "0010";
-        
         s_dp_i   <= "0111";      
-        
-        wait for 500 us;          
-       
-        
-        wait for 4 ms;   
-      
-        
-        wait for 4 ms;   
-        
-        
-        wait for 4 ms;   
-      
-                
-
+        wait for 350 ns;
+ 
+  
         report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;

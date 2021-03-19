@@ -62,14 +62,14 @@ begin
 
             elsif (en_i= '1') then
             
-            if (cnt_up_i = '1' )  then
+           -- if (cnt_up_i = '1' )  then
                  s_cnt_local <= s_cnt_local + 1;
                 else
-            s_cnt_local <= s_cnt_local - 1;
+--           s_cnt_local <= s_cnt_local - 1;
                end if; 
 
             end if;
-        end if;
+      --  end if;
     end process p_cnt_up_down;
 
     -- Output must be retyped from "unsigned" to "std_logic_vector"
