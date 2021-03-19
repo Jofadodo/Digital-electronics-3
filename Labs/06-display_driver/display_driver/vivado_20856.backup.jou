@@ -1,0 +1,48 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Mar 19 11:29:50 2021
+# Process ID: 20856
+# Current directory: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20076 C:\Dominik\Digital-electronics-1\Labs\06-display_driver\display_driver\display_driver.xpr
+# Log file: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/vivado.log
+# Journal file: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/display_driver.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+set_property -name {xsim.simulate.runtime} -value {800ns} -objects [get_filesets sim_1]
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim
+launch_simulation
+source tb_driver_7seg_4digits.tcl
+close_sim

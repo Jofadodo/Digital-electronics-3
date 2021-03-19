@@ -4,11 +4,11 @@ Xilinx Vivado v2020.2 (64-bit) [Major: 2020, Minor: 2]
 SW Build: 3064766 on Wed Nov 18 09:12:45 MST 2020
 IP Build: 3064653 on Wed Nov 18 14:17:31 MST 2020
 
-Process ID (PID): 20856
+Process ID (PID): 20756
 License: Customer
 Mode: GUI Mode
 
-Current time: 	Fri Mar 19 11:30:14 CET 2021
+Current time: 	Fri Mar 19 15:22:53 CET 2021
 Time zone: 	Central European Standard Time (Europe/Prague)
 
 OS: Windows 10
@@ -47,7 +47,7 @@ Vivado layouts directory: C:/Users/Domèo/AppData/Roaming/Xilinx/Vivado/2020.2/da
 PlanAhead jar file location: 	C:/Xilinx/Vivado/2020.2/lib/classes/planAhead.jar
 Vivado log file location: 	C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/vivado.log
 Vivado journal file location: 	C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/vivado.jou
-Engine tmp dir: 	C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/.Xil/Vivado-20856-LAPTOP-9FBLFQM5
+Engine tmp dir: 	C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/.Xil/Vivado-20756-LAPTOP-9FBLFQM5
 
 Xilinx Environment Variables
 ----------------------------
@@ -59,9 +59,9 @@ XILINX_VIVADO: C:/Xilinx/Vivado/2020.2
 XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2020.2
 
 
-GUI allocated memory:	131 MB
+GUI allocated memory:	137 MB
 GUI max memory:		3,072 MB
-Engine allocated memory: 1,000 MB
+Engine allocated memory: 1,015 MB
 
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
@@ -96,11 +96,8 @@ Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // Tcl Message: Scanning sources... Finished scanning sources 
 // Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
 // TclEventType: PROJECT_NEW
-// [GUI Memory]: 89 MB (+90374kb) [00:00:16]
-// [Engine Memory]: 1,000 MB (+896674kb) [00:00:16]
-// [GUI Memory]: 110 MB (+17351kb) [00:00:16]
-// [GUI Memory]: 118 MB (+3091kb) [00:00:17]
-// [GUI Memory]: 125 MB (+1128kb) [00:00:18]
-// WARNING: HEventQueue.dispatchEvent() is taking  3383 ms.
+// [GUI Memory]: 98 MB (+99814kb) [00:00:11]
+// [Engine Memory]: 1,015 MB (+912603kb) [00:00:11]
+// [GUI Memory]: 119 MB (+16879kb) [00:00:11]
+// WARNING: HEventQueue.dispatchEvent() is taking  2968 ms.
 // Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'. 
-// HMemoryUtils.trashcanNow. Engine heap size: 1,000 MB. GUI used memory: 60 MB. Current time: 3/19/21, 11:30:18 AM CET

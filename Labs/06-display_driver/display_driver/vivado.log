@@ -2,10 +2,10 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Mar 19 11:29:50 2021
-# Process ID: 20856
+# Start of session at: Fri Mar 19 15:22:35 2021
+# Process ID: 20756
 # Current directory: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20076 C:\Dominik\Digital-electronics-1\Labs\06-display_driver\display_driver\display_driver.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7408 C:\Dominik\Digital-electronics-1\Labs\06-display_driver\display_driver\display_driver.xpr
 # Log file: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver/vivado.log
 # Journal file: C:/Dominik/Digital-electronics-1/Labs/06-display_driver/display_driver\vivado.jou
 #-----------------------------------------------------------
@@ -17,4 +17,4 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
-open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 993.730 ; gain = 0.000
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 1003.293 ; gain = 0.000
