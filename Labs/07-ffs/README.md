@@ -42,7 +42,7 @@
        end if;
      end process p_d_latch;
 ```
-D latch VHDL TESTBENCH - process
+# D latch VHDL TESTBENCH - process
 
 ```vhdl
      p_d_latch :process
@@ -118,7 +118,7 @@ D latch VHDL TESTBENCH - process
 ![SIMULACIA](Images/simulacia1.png)
 
 
-#Flip-flops VHDL SOURCE - p_d_ff_arst process
+# Flip-flops VHDL SOURCE - p_d_ff_arst process
 
 ```vhdl
   p_d_ff_arst :process (clk,arst)
@@ -135,14 +135,14 @@ D latch VHDL TESTBENCH - process
 ```
 ![SIMULACIA](Images/simulacia2.png)
 
-#Flip-flops VHDL SOURCE - p_d_ff_rst process
+# Flip-flops VHDL SOURCE - p_d_ff_rst process
 
 ```vhdl
 
 ```
 ![SIMULACIA](Images/simulacia3.png)
 
-#Flip-flops VHDL SOURCE - p_jk_ff_rst process
+# Flip-flops VHDL SOURCE - p_jk_ff_rst process
 
 ```vhdl
  p_jk_ff_rst :process (clk,rst)
@@ -175,7 +175,7 @@ D latch VHDL TESTBENCH - process
 
 ![SIMULACIA](Images/simulacia4.png)
 
-#Flip-flops VHDL SOURCE - p_t_ff_rst process
+# Flip-flops VHDL SOURCE - p_t_ff_rst process
 
 ```vhdl
 
