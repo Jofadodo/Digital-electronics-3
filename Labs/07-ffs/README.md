@@ -118,6 +118,21 @@
 ![SIMULACIA](Images/simulacia1.png)
 
 
+# Flip-flops VHDL TESTBENCH - clockenable process
+
+```vhdl
+   p_clk_gen : process
+      begin 
+         while now < 750ns loop         -- 75 periods of 100MHz clock
+            s_clk <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+      end process p_clk_gen;
+``` 
+
 # Flip-flops VHDL SOURCE - p_d_ff_arst process
 
 ```vhdl
@@ -133,14 +148,37 @@
        end if;
      end process p_d_ff_arst;
 ```
+
+# Flip-flops VHDL TESTBENCH - reset process
+
+```vhdl
+  p_reset_gen : process
+      begin
+           s_arst <= '0';
+           wait for 328 ns;
+        
+        -- Reset activated
+           s_arst <= '1';
+           wait for 144 ns;
+
+        -- Reset deactivated
+           s_arst <= '0';
+
+           wait;
+       end process p_reset_gen;
+```
+
 ![SIMULACIA](Images/simulacia2.png)
+
 
 # Flip-flops VHDL SOURCE - p_d_ff_rst process
 
 ```vhdl
 
 ```
+
 ![SIMULACIA](Images/simulacia3.png)
+
 
 # Flip-flops VHDL SOURCE - p_jk_ff_rst process
 
@@ -173,7 +211,27 @@
      q_bar <= s_q_bar;
 ```
 
+# Flip-flops VHDL TESTBENCH - reset process
+
+```vhdl
+   p_reset_gen : process
+      begin
+           s_rst <= '0';
+           wait for 328 ns;
+        
+        -- Reset activated
+           s_rst <= '1';
+           wait for 144 ns;
+
+        -- Reset deactivated
+           s_rst <= '0';
+
+           wait;
+       end process p_reset_gen;
+```
+
 ![SIMULACIA](Images/simulacia4.png)
+
 
 # Flip-flops VHDL SOURCE - p_t_ff_rst process
 
@@ -182,3 +240,4 @@
 ```
 
 ![SIMULACIA](Images/simulacia5.png)
+
