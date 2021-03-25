@@ -41,35 +41,27 @@ entity jk_ff_rst is
 end jk_ff_rst;
 
 architecture Behavioral of jk_ff_rst is
-    signal s_q :STD_LOGIC;
-    signal s_q_bar :STD_LOGIC;
-    
 begin
-  p_jk_ff_rst :process (clk,rst)
+  p_jk_ff_rst :process (clk)
+  variable qn : std_logic;
     begin
        if rising_edge (clk) then
          if(rst = '1') then 
-           s_q     <= '1';
-           s_q_bar <= '1'; 
+           qn := '0';
       else
        if (j ='0' and k= '0') then
-           s_q     <= s_q;
-           s_q_bar <= s_q_bar;
+           qn := qn;
        elsif (j ='0' and k= '1') then
-           s_q     <= '0';
-           s_q_bar <= '0';
+           qn := '0';
        elsif (j ='1' and k= '0') then
-           s_q     <= '1';
-           s_q_bar <= '1';
+           qn := '1';
        else
-           s_q      <= not s_q;
-           s_q_bar  <= not s_q_bar;
+           qn := not qn;
          end if;
        end if;
      end if;
+     q     <= qn;
+     q_bar <= not qn;
      end process p_jk_ff_rst;
-     
-     q     <= s_q;
-     q_bar <= s_q_bar;
-     
+   
 end Behavioral;

@@ -42,7 +42,8 @@
        end if;
      end process p_d_latch;
 ```
-# D latch VHDL TESTBENCH - process
+
+# D latch VHDL TESTBENCH - stimulus process
 
 ```vhdl
      p_d_latch :process
@@ -136,17 +137,18 @@
 # Flip-flops VHDL SOURCE - p_d_ff_arst process
 
 ```vhdl
-  p_d_ff_arst :process (clk,arst)
-     begin
-       if (arst = '1') then
-          q     <= '0';
-          q_bar <= '1';
-          
-       elsif rising_edge (clk) then
-          q     <= d;
-          q_bar <= not d;
+  p_d_ff_rst :process (clk)
+    begin
+       if rising_edge (clk) then
+         if(rst = '1') then 
+           s_q     <= '0';
+           s_q_bar <= '1'; 
+       else
+           s_q     <= d;    
+           s_q_bar <= not d;
+         end if;
        end if;
-     end process p_d_ff_arst;
+     end process p_d_ff_rst;
 ```
 
 # Flip-flops VHDL TESTBENCH - reset process
@@ -167,6 +169,70 @@
            wait;
        end process p_reset_gen;
 ```
+# Flip-flops VHDL TESTBENCH - stimulus process
+
+```vhdl
+   p_d_ff_arst :process
+      begin
+          report "Stimulus process started" severity note;
+
+          s_d    <= '0';
+          wait for 26 ns;
+
+          s_d    <= '1'; 
+          wait for 14 ns;
+          s_d    <= '0';
+          wait for 24 ns;
+          s_d    <= '1';
+          wait for 22 ns;
+          s_d    <= '0';
+          wait for 36 ns;
+
+          -- Test enable
+          wait for 14 ns;
+          s_d  <= '1';
+          wait for 14 ns;
+          s_d  <= '0';
+          wait for 24 ns;
+          s_d  <= '1';
+          wait for 22 ns;
+          s_d  <= '0';
+          wait for 36 ns;
+          wait for 56 ns;
+
+          s_d    <= '1'; 
+          wait for 14 ns;
+          s_d    <= '0'; 
+          wait for 24 ns;
+          s_d    <= '1'; 
+          wait for 22 ns;
+          s_d    <= '0'; 
+          wait for 36 ns;
+
+          -- Test reset
+          wait for 14 ns;
+          s_d    <= '1';
+          wait for 14 ns;
+          s_d    <= '0';
+          wait for 36 ns;
+          s_d  <= '1';
+          wait for 22 ns;
+          s_d <= '0';
+          wait for 56 ns;
+          s_d <= '1';
+          wait for 14 ns;
+          s_d <= '0';
+          wait for 24 ns;
+          s_d <= '1';
+          wait for 22 ns;
+          s_d <= '0';
+          wait for 36  ns;
+           
+           report "Stimulus process finished" severity note;
+           wait;
+
+        end process p_d_ff_arst;
+```
 
 ![SIMULACIA](Images/simulacia2.png)
 
@@ -174,7 +240,103 @@
 # Flip-flops VHDL SOURCE - p_d_ff_rst process
 
 ```vhdl
+p_d_ff_rst :process (clk)
+    begin
+       if rising_edge (clk) then
+         if(rst = '1') then 
+           s_q     <= '0';
+           s_q_bar <= '1'; 
+       else
+           s_q     <= d;    
+           s_q_bar <= not d;
+         end if;
+       end if;
+     end process p_d_ff_rst;
+```
 
+# Flip-flops VHDL TESTBENCH - reset process
+
+```vhdl
+p_reset_gen : process
+      begin
+           s_rst <= '0';
+           wait for 328 ns;
+        
+        -- Reset activated
+           s_rst <= '1';
+           wait for 144 ns;
+
+        -- Reset deactivated
+           s_rst <= '0';
+
+           wait;
+       end process p_reset_gen;
+```
+
+# Flip-flops VHDL TESTBENCH - stimulus process
+
+```vhdl
+p_d_ff_rst :process (clk)
+      p_d_ff_rst :process
+      begin
+          report "Stimulus process started" severity note;
+          
+          s_d    <= '0';
+          wait for 26 ns;
+
+          s_d    <= '1'; 
+          wait for 14 ns;
+          s_d    <= '0';
+          wait for 24 ns;
+          s_d    <= '1';
+          wait for 22 ns;
+          s_d    <= '0';
+          wait for 36 ns;
+
+          -- Test enable
+          wait for 14 ns;
+          s_d  <= '1';
+          wait for 14 ns;
+          s_d  <= '0';
+          wait for 24 ns;
+          s_d  <= '1';
+          wait for 22 ns;
+          s_d  <= '0';
+          wait for 36 ns;
+          wait for 56 ns;
+
+          s_d    <= '1'; 
+          wait for 14 ns;
+          s_d    <= '0'; 
+          wait for 24 ns;
+          s_d    <= '1'; 
+          wait for 22 ns;
+          s_d    <= '0'; 
+          wait for 36 ns;
+
+          -- Test reset
+          wait for 14 ns;
+          s_d    <= '1';
+          wait for 14 ns;
+          s_d    <= '0';
+          wait for 36 ns;
+          s_d  <= '1';
+          wait for 22 ns;
+          s_d <= '0';
+          wait for 56 ns;
+          s_d <= '1';
+          wait for 14 ns;
+          s_d <= '0';
+          wait for 24 ns;
+          s_d <= '1';
+          wait for 22 ns;
+          s_d <= '0';
+          wait for 36  ns;
+         
+          report "Stimulus process finished" severity note;
+          wait;
+
+        end process p_d_ff_rst;
 ```
 
 ![SIMULACIA](Images/simulacia3.png)
@@ -183,32 +345,27 @@
 # Flip-flops VHDL SOURCE - p_jk_ff_rst process
 
 ```vhdl
- p_jk_ff_rst :process (clk,rst)
+ p_jk_ff_rst :process (clk)
+  variable qn : std_logic;
     begin
        if rising_edge (clk) then
          if(rst = '1') then 
-           s_q     <= '1';
-           s_q_bar <= '1'; 
+           qn := '0';
       else
        if (j ='0' and k= '0') then
-           s_q     <= s_q;
-           s_q_bar <= s_q_bar;
+           qn := qn;
        elsif (j ='0' and k= '1') then
-           s_q     <= '0';
-           s_q_bar <= '0';
+           qn := '0';
        elsif (j ='1' and k= '0') then
-           s_q     <= '1';
-           s_q_bar <= '1';
+           qn := '1';
        else
-           s_q      <= not s_q;
-           s_q_bar  <= not s_q_bar;
+           qn := not qn;
          end if;
        end if;
      end if;
+     q     <= qn;
+     q_bar <= not qn;
      end process p_jk_ff_rst;
-     
-     q     <= s_q;
-     q_bar <= s_q_bar;
 ```
 
 # Flip-flops VHDL TESTBENCH - reset process
@@ -230,13 +387,193 @@
        end process p_reset_gen;
 ```
 
+# Flip-flops VHDL TESTBENCH - stimulus process
+
+```vhdl
+    p_jk_ff_rst :process
+      begin
+          report "Stimulus process started" severity note;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 26 ns;
+          
+          s_j    <= '1'; 
+          s_k    <= '0';
+          wait for 14 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 24 ns;
+          s_j    <= '0';
+          s_k    <= '1';
+          wait for 22 ns;
+          s_j    <= '1';
+          s_k    <= '1';
+          wait for 36 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 26 ns;
+          
+          s_j    <= '1'; 
+          s_k    <= '0';
+          wait for 14 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 24 ns;
+          s_j    <= '0';
+          s_k    <= '1';
+          wait for 22 ns;
+          s_j    <= '1';
+          s_k    <= '1';
+          wait for 36 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 26 ns;
+          
+          s_j    <= '1'; 
+          s_k    <= '0';
+          wait for 14 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 24 ns;
+          s_j    <= '0';
+          s_k    <= '1';
+          wait for 22 ns;
+          s_j    <= '1';
+          s_k    <= '1';
+          wait for 36 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 26 ns;
+          
+          s_j    <= '1'; 
+          s_k    <= '0';
+          wait for 14 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 24 ns;
+          s_j    <= '0';
+          s_k    <= '1';
+          wait for 22 ns;
+          s_j    <= '1';
+          s_k    <= '1';
+          wait for 36 ns;
+          s_j    <= '0';
+          s_k    <= '0';
+          wait for 26 ns;
+         
+          report "Stimulus process finished" severity note;
+          wait;
+
+        end process p_jk_ff_rst;
+```
+
 ![SIMULACIA](Images/simulacia4.png)
 
 
 # Flip-flops VHDL SOURCE - p_t_ff_rst process
 
 ```vhdl
+     p_t_ff_rst :process (clk)
+    begin 
+     if rising_edge (clk) then
+         if(rst = '1') then 
+           s_q     <= '0';
+           s_q_bar <= '1'; 
+       else
+           if (t = '0') then
+           s_q     <= s_q;
+           s_q_bar <= s_q_bar;
+       else 
+          s_q     <= not s_q;
+          s_q_bar <= not s_q_bar;
+       end if;
+     end if;
+   end if;
+       end process  p_t_ff_rst ;
+```
 
+# Flip-flops VHDL TESTBENCH - reset process
+
+```vhdl
+   p_reset_gen : process
+      begin
+           s_rst <= '0';
+           wait for 328 ns;
+        
+        -- Reset activated
+           s_rst <= '1';
+           wait for 144 ns;
+
+        -- Reset deactivated
+           s_rst <= '0';
+
+           wait;
+       end process p_reset_gen;
+```
+
+# Flip-flops VHDL TESTBENCH - stimulus process
+
+```vhdl
+      p_t_ff_arst :process
+      begin
+          report "Stimulus process started" severity note;
+
+          s_t    <= '0';
+          wait for 26 ns;
+
+          s_t    <= '1'; 
+          wait for 14 ns;
+          s_t    <= '0';
+          wait for 24 ns;
+          s_t    <= '1';
+          wait for 22 ns;
+          s_t    <= '0';
+          wait for 36 ns;
+
+          -- Test enable
+          wait for 14 ns;
+          s_t  <= '1';
+          wait for 14 ns;
+          s_t  <= '0';
+          wait for 24 ns;
+          s_t  <= '1';
+          wait for 22 ns;
+          s_t  <= '0';
+          wait for 36 ns;
+          wait for 56 ns;
+
+          s_t    <= '1'; 
+          wait for 14 ns;
+          s_t    <= '0'; 
+          wait for 24 ns;
+          s_t    <= '1'; 
+          wait for 22 ns;
+          s_t    <= '0'; 
+          wait for 36 ns;
+
+          -- Test reset
+          wait for 14 ns;
+          s_t    <= '1';
+          wait for 14 ns;
+          s_t    <= '0';
+          wait for 36 ns;
+          s_t  <= '1';
+          wait for 22 ns;
+          s_t <= '0';
+          wait for 56 ns;
+          s_t <= '1';
+          wait for 14 ns;
+          s_t <= '0';
+          wait for 24 ns;
+          s_t <= '1';
+          wait for 22 ns;
+          s_t <= '0';
+          wait for 36  ns;
+           
+           report "Stimulus process finished" severity note;
+           wait;
+
+        end process p_t_ff_arst;
 ```
 
 ![SIMULACIA](Images/simulacia5.png)

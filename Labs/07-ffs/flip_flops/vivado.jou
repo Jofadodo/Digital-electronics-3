@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Mar 25 15:42:52 2021
+# Process ID: 13832
+# Current directory: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18208 C:\Dominik\Digital-electronics-1\Labs\07-ffs\flip_flops\flip_flops.xpr
+# Log file: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/vivado.log
+# Journal file: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/flip_flops.xpr

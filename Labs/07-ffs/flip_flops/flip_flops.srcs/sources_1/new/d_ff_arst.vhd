@@ -40,18 +40,20 @@ entity d_ff_arst is
 end d_ff_arst;
 
 architecture Behavioral of d_ff_arst is
-
+       signal s_q :STD_LOGIC;
+       signal s_q_bar :STD_LOGIC;
 begin
   p_d_ff_arst :process (clk,arst)
      begin
        if (arst = '1') then
-          q     <= '0';
-          q_bar <= '1';
+          s_q     <= '0';
+          s_q_bar <= '1';
           
        elsif rising_edge (clk) then
-          q     <= d;
-          q_bar <= not d;
+          s_q     <= d;
+          s_q_bar <= not d;
        end if;
      end process p_d_ff_arst;
-
+     q     <= s_q;
+     q_bar <= s_q_bar;
 end Behavioral;
