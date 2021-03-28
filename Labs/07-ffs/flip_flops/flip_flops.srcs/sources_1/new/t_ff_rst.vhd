@@ -40,7 +40,7 @@ entity t_ff_rst is
 end t_ff_rst;
 
 architecture Behavioral of t_ff_rst is
-     signal s_q     :STD_LOGIC;
+     signal s_q :STD_LOGIC;
      signal s_q_bar :STD_LOGIC;
 begin
      p_t_ff_rst :process (clk)

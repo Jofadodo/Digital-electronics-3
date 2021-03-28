@@ -2,10 +2,10 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Mar 25 15:42:52 2021
-# Process ID: 13832
+# Start of session at: Sat Mar 27 10:52:14 2021
+# Process ID: 1752
 # Current directory: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18208 C:\Dominik\Digital-electronics-1\Labs\07-ffs\flip_flops\flip_flops.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1896 C:\Dominik\Digital-electronics-1\Labs\07-ffs\flip_flops\flip_flops.xpr
 # Log file: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/vivado.log
 # Journal file: C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops\vivado.jou
 #-----------------------------------------------------------
@@ -17,3 +17,49 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 995.434 ; gain = 0.000
+update_compile_order -fileset sources_1
+set_property top top [current_fileset]
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7a50ticsg324-1L
+Top: top
+INFO: [Device 21-403] Loading part xc7a50ticsg324-1L
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1264.410 ; gain = 254.480
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top' [C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/flip_flops.srcs/sources_1/new/top.vhd:41]
+INFO: [Synth 8-638] synthesizing module 'd_ff_rst' [C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/flip_flops.srcs/sources_1/new/d_ff_rst.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'd_ff_rst' (1#1) [C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/flip_flops.srcs/sources_1/new/d_ff_rst.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'top' (2#1) [C:/Dominik/Digital-electronics-1/Labs/07-ffs/flip_flops/flip_flops.srcs/sources_1/new/top.vhd:41]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1338.355 ; gain = 328.426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1338.355 ; gain = 328.426
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1338.355 ; gain = 328.426
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1338.355 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1374.094 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:17 ; elapsed = 00:00:10 . Memory (MB): peak = 1550.922 ; gain = 540.992
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1550.922 ; gain = 555.488
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Mar 27 10:56:53 2021...

@@ -578,3 +578,5 @@ p_d_ff_rst :process (clk)
 
 ![SIMULACIA](Images/simulacia5.png)
 
+
+![NAKRES](Images/shiftregister.jpg)
