@@ -1,6 +1,8 @@
 ## Cvičenie 7
 
-# PREPARATION TASK
+# PREPARATION TASKS
+
+![ROVNICE](Images/rovnice.png)
 
 | **D** | **Qn** | **Q(n+1)** | **Comments** |
 | :-: | :-: | :-: | :-- |
