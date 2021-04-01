@@ -152,7 +152,7 @@ p_traffic_fsm : process(clk)
 # SMART CONTROLLER - STATE TABLE
 
 | **Current state** | **Direction South** | **Direction West** | **Delay** | **Info** |
-| :-- | :-: | :-: | :-: |
+| :-- | :-: | :-: | :-: | :-: |
 | `STOP1`      | red    | red | 1 sec |-|
 | `WEST_GO`    | red    | green | 4 sec |SENSOR|
 | `WEST_WAIT`  | red    | yellow | 2 sec |-|
