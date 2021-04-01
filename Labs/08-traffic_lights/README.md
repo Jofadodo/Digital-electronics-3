@@ -151,17 +151,18 @@ p_traffic_fsm : process(clk)
 
 # SMART CONTROLLER - STATE TABLE
 
-| **Current state** | **Direction South** | **Direction West** | **Delay** |
+| **Current state** | **Direction South** | **Direction West** | **Delay** | **Info** |
 | :-- | :-: | :-: | :-: |
-| `STOP1`      | red    | red | 1 sec |
-| `WEST_GO`    | red    | green | 4 sec |
-| `WEST_WAIT`  | red    | yellow | 2 sec |
-| `STOP2`      | red    | red | 1 sec |
-| `SOUTH_GO`   | green  | red | 4 sec |
-| `SOUTH_WAIT` | yellow | red | 2 sec |
+| `STOP1`      | red    | red | 1 sec |-|
+| `WEST_GO`    | red    | green | 4 sec |SENSOR|
+| `WEST_WAIT`  | red    | yellow | 2 sec |-|
+| `STOP2`      | red    | red | 1 sec |-|
+| `SOUTH_GO`   | green  | red | 4 sec |SENSOR|
+| `SOUTH_WAIT` | yellow | red | 2 sec |-|
 
 # SMART CONTROLLER - STATE DIAGRAM
 
+![traffic](Images/traffic.jpg)
 
 # SMART CONTROLLER VHDL SOURCE - p_smart_traffic_fsm process
 
