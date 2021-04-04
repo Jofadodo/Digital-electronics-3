@@ -1,4 +1,4 @@
-## Cvičenie 7
+## Cvičenie 8
 
 # PREPARATION TASKS
 
@@ -13,6 +13,9 @@
 | LD16 | N15, M16, R12 | `1,0,0` | `1,1,0` | `0,1,0` |
 | LD17 | N16, R11, G14 | `1,0,0` | `1,1,0` | `0,1,0` |
 
+TRAFFIC LIGHT CONTROLLER - STATE DIAGRAM
+
+![traffic1](Images/traffic2.jpg)
 
 # TRAFFIC LIGHT CONTROLLER VHDL SOURCE - p_traffic_fsm process
 
