@@ -2,10 +2,10 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Apr  5 12:48:46 2021
-# Process ID: 25348
+# Start of session at: Wed Mar 31 15:36:43 2021
+# Process ID: 4836
 # Current directory: C:/Dominik/Digital-electronics-1/Labs/08-traffic_lights/traffic
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15896 C:\Dominik\Digital-electronics-1\Labs\08-traffic_lights\traffic\traffic.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12868 C:\Dominik\Digital-electronics-1\Labs\08-traffic_lights\traffic\traffic.xpr
 # Log file: C:/Dominik/Digital-electronics-1/Labs/08-traffic_lights/traffic/vivado.log
 # Journal file: C:/Dominik/Digital-electronics-1/Labs/08-traffic_lights/traffic\vivado.jou
 #-----------------------------------------------------------
@@ -17,7 +17,7 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
-open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 992.926 ; gain = 0.000
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 1001.859 ; gain = 0.000
 update_compile_order -fileset sources_1
 exit
-INFO: [Common 17-206] Exiting Vivado at Mon Apr  5 12:59:04 2021...
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 31 15:54:19 2021...
