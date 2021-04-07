@@ -1,15 +1,23 @@
-## CONSOLE FO EXERCISE BIKE/BIKE
+# CONSOLE FOR EXERCISE BIKE/BIKE - PROJECT
 
-# Team members
+## Team members
 
-# Project objectives
+Fašanga Jozef -
 
-# Hardware description
+Fabulec Martin - 
 
-# VHDL modules description
+Dziuina Valeriia - 
 
-# TOP module description
+Frolka Jan - 
 
-# Video
+## Project objectives
 
-# References
+## Hardware description
+
+## VHDL modules description
+
+## TOP module description
+
+## Video
+
+## References
