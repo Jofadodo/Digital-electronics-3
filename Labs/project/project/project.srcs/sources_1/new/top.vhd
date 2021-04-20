@@ -36,7 +36,7 @@ entity top is
     
            SW     : in STD_LOGIC_VECTOR (4 - 1 downto 0);
            an_i   : in STD_LOGIC_VECTOR (4 - 1 downto 0);
-           asdf   : in STD_LOGIC_VECTOR (4 - 1 downto 0);
+           asdf   : in integer;
            
            
            LED  : out STD_LOGIC_VECTOR (8 - 1 downto 0);
