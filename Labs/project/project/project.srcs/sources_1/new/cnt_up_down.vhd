@@ -1,81 +1,71 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 10.03.2021 10:04:27
--- Design Name: 
--- Module Name: clock_enable - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+------------------------------------------------------------------------
+--
+-- N-bit Up/Down binary counter.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2019-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
 
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
-entity clock_enable is
+------------------------------------------------------------------------
+-- Entity declaration for n-bit counter
+------------------------------------------------------------------------
+entity cnt_up_down is
     generic(
-        g_MAX : natural := 100      -- Number of clk pulses to generate
-                                    -- one enable signal period
-    );  -- Note that there IS a semicolon between generic and port
-        -- sections
-    port(
-        clk   : in  std_logic;      -- Main clock
-        reset : in  std_logic;      -- Synchronous reset
-        ce_o  : out std_logic       -- Clock enable pulse signal
+        g_CNT_WIDTH : natural := 4      -- Number of bits for counter
     );
-end entity clock_enable;
+    port(
+        clk      : in  std_logic;       -- Main clock
+        reset    : in  std_logic;       -- Synchronous reset
+        en_i     : in  std_logic;       -- Enable input
+        cnt_up_i : in  std_logic;       -- Direction of the counter
+        cnt_o    : out std_logic_vector(g_CNT_WIDTH - 1 downto 0)
+    );
+end entity cnt_up_down;
 
 ------------------------------------------------------------------------
--- Architecture body for clock enable
+-- Architecture body for n-bit counter
 ------------------------------------------------------------------------
-architecture behavioral of clock_enable is
+architecture behavioral of cnt_up_down is
 
     -- Local counter
-    signal s_cnt_local : natural;
+    signal s_cnt_local : unsigned(g_CNT_WIDTH - 1 downto 0);
 
 begin
     --------------------------------------------------------------------
-    -- p_clk_ena:
-    -- Generate clock enable signal. By default, enable signal is low 
-    -- and generated pulse is always one clock long.
+    -- p_cnt_up_down:
+    -- Clocked process with synchronous reset which implements n-bit 
+    -- up/down counter.
     --------------------------------------------------------------------
-    p_clk_ena : process(clk)
+    p_cnt_up_down : process(clk)
     begin
-        if rising_edge(clk) then        -- Synchronous process
+        if rising_edge(clk) then
+        
+            if (reset = '1') then               -- Synchronous reset
+                s_cnt_local <= (others => '0'); -- Clear all bits
 
-            if (reset = '1') then       -- High active reset
-                s_cnt_local <= 0;       -- Clear local counter
-                ce_o        <= '0';     -- Set output to low
+            elsif (en_i = '1') then       -- Test if counter is enabled
 
-            -- Test number of clock periods
-            elsif (s_cnt_local >= (g_MAX - 1)) then
-                s_cnt_local <= 0;       -- Clear local counter
-                ce_o        <= '1';     -- Generate clock enable pulse
 
-            else
+            if (cnt_up_i = '1') then
                 s_cnt_local <= s_cnt_local + 1;
-                ce_o        <= '0';
+                    
+            elsif (cnt_up_i = '0') then
+                s_cnt_local <= s_cnt_local - 1;
+                
+             end if;
+
             end if;
         end if;
-    end process p_clk_ena;
+    end process p_cnt_up_down;
+
+    -- Output must be retyped from "unsigned" to "std_logic_vector"
+    cnt_o <= std_logic_vector(s_cnt_local);
 
 end architecture behavioral;

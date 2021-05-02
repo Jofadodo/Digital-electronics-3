@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03.03.2021 16:03:32
+-- Create Date: 10.03.2021 13:59:02
 -- Design Name: 
 -- Module Name: top - Behavioral
 -- Project Name: 
@@ -32,34 +32,43 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity top is
-    Port ( 
+Port ( 
     
-           SW     : in STD_LOGIC_VECTOR (4 - 1 downto 0);
-           an_i   : in STD_LOGIC_VECTOR (4 - 1 downto 0);
-           asdf   : in integer;
+           CLK100MHZ   : in STD_LOGIC;
+           BTN0        : in STD_LOGIC;
+           BTN1        : in STD_LOGIC;
+           BTN2        : in STD_LOGIC;
+           hall        : in STD_LOGIC;
            
+           CA          : out STD_LOGIC;
+           CB          : out STD_LOGIC;
+           CC          : out STD_LOGIC;
+           CD          : out STD_LOGIC;
+           CE          : out STD_LOGIC;
+           CF          : out STD_LOGIC;
+           CG          : out STD_LOGIC;
            
-           LED  : out STD_LOGIC_VECTOR (8 - 1 downto 0);
-           AN   : out STD_LOGIC_VECTOR (4 - 1 downto 0);
+           DP          : out STD_LOGIC;
            
-           CA   : out STD_LOGIC;
-           CB   : out STD_LOGIC;
-           CC   : out STD_LOGIC;
-           CD   : out STD_LOGIC;
-           CE   : out STD_LOGIC;
-           CF   : out STD_LOGIC;
-           CG   : out STD_LOGIC
+           AN          : out STD_LOGIC_VECTOR (4 - 1 downto 0)
            
     );
 end top;
 
 architecture Behavioral of top is
 
-begin 
+    signal s_decimal : integer;
 
-    hex2seg : entity work.hex_7seg
+begin        
+    driver_seg_4 : entity work.driver_7seg_4digits
         port map(
-            hex_i    => asdf,
+            clk        => CLK100MHZ,
+            reset      => BTN2,
+
+            decimal => s_decimal,
+
+            dp_i => "1110",
+            dp_o => DP,
             
             seg_o(6) => CA,
             seg_o(5) => CB,
@@ -67,17 +76,21 @@ begin
             seg_o(3) => CD,
             seg_o(2) => CE,
             seg_o(1) => CF,
-            seg_o(0) => CG
+            seg_o(0) => CG,
+            
+            dig_o => AN(4 - 1 downto 0)
+        );
+        
+    hall_sensor : entity work.hall
+        port map(
+            clk            => CLK100MHZ,
+            hall_sensor    => hall,
+            wheel_circuit  => 2200,
+            mode_BTN       => BTN0,
+            reset_BTN      => BTN1,
+            
+
+            number         => s_decimal
         );
 
-    AN <= an_i;
-
-
-    LED(3 downto 0) <= SW;
-
-    LED(4)  <= '1' when (SW = "0000") else '0';
-    LED(5)  <= '1' when (SW > "1001") else '0';
-    LED(6)  <= '1' when (SW(0) = '1') else '0';
-    LED(7)  <= '1' when (SW = "0001" or SW = "0010" or SW = "0100" or SW = "1000") else '0';
-
-end Behavioral;
+end architecture Behavioral;

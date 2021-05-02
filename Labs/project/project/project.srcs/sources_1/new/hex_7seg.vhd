@@ -1,48 +1,46 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03.03.2021 10:26:04
--- Design Name: 
--- Module Name: hex_7seg - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+------------------------------------------------------------------------
+--
+-- Example of 2-bit binary comparator using the when/else assignment.
+-- EDA Playground
+--
+-- Copyright (c) 2020-2021 Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
 
+library ieee;
+use ieee.std_logic_1164.all;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+------------------------------------------------------------------------
+-- Entity declaration for 2-bit binary comparator
+------------------------------------------------------------------------
 entity hex_7seg is
-    Port (
-           hex_i         : in  integer range 0 to 9999;  --Input binary data
-           seg_o : out STD_LOGIC_VECTOR (7 - 1 downto 0)); --Cathode values in the order A, B, C, D, E, F, G
-end hex_7seg;
+    port
+    (
+        
+        hex_i         : in  integer range 0 to 9999;
+        seg_o         : out std_logic_vector(7 - 1 downto 0)
+        
+    );
+end entity hex_7seg;
 
+------------------------------------------------------------------------
+-- Architecture body for 2-bit binary comparator
+------------------------------------------------------------------------
 architecture Behavioral of hex_7seg is
+begin
 
-begin
-p_7seg_decoder :process (hex_i)
-begin
- case hex_i is
+    --------------------------------------------------------------------
+    -- p_7seg_decoder:
+    -- A combinational process for 7-segment display decoder. 
+    -- Any time "hex_i" is changed, the process is "executed".
+    -- Output pin seg_o(6) corresponds to segment A, seg_o(5) to B, etc.
+    --------------------------------------------------------------------
+    p_7seg_decoder : process(hex_i)
+    begin
+    
+        case hex_i is
             when 0 =>
                 seg_o <= "0000001";     -- 0
             when 1 =>
@@ -52,11 +50,11 @@ begin
             when 3 =>
                 seg_o <= "0000110";     -- 3
             when 4 =>
-                seg_o <= "1001100";     -- 4
+                seg_o <= "1001100";     -- 4 
             when 5 =>
                 seg_o <= "0100100";     -- 5
             when 6 =>
-                seg_o <= "0100000";     -- 6
+                seg_o <= "0100000";     -- 6 
             when 7 =>
                 seg_o <= "0001111";     -- 7
             when 8 =>
@@ -64,7 +62,9 @@ begin
             when 9 =>
                 seg_o <= "0000100";     -- 9
             when others =>
-                seg_o <= "1111111";   
-end case;
-end process p_7seg_decoder;
+                seg_o <= "1111111";
+        end case;
+        
+    end process p_7seg_decoder;
+
 end architecture Behavioral;

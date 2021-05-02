@@ -4,11 +4,11 @@
 
 Dziuina Valeriia -
 
-Fabulec Martin - 
+Fabulec Martin - https://github.com/Fabulec/Digital-electronics-1
 
-Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1
+Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1 
 
-Frolka Jan - 
+Frolka Jan - https://github.com/xfrolk03/Digital-electronics-1-2021
 
 ## Project objectives
 
@@ -17,11 +17,15 @@ and to use this implementation, so the console, which we will make, will show us
 
 ## Hardware description
 
-For this project we are using clock enable with added north pole hall sensor entity. The project is implementable on Arty A7-35T board.
+The project is implementable on Arty A7-35T board.
 
-**Table with connections on board**
+**Connections of 7 Segment Display 
 
-| **Connector** | **Pin** |
+![7-SEG](Images/1.png)
+
+**Tables with connections on board**
+
+| **Connector** | **Pin on board** |
 | :-: | :-: |
 | CA | G13 |
 | CB | B11 |
@@ -32,30 +36,303 @@ For this project we are using clock enable with added north pole hall sensor ent
 | CG | A18 |
 | DP | K16 |
 | -- | -- |
+| VCC3V3 | 3V3 |
+| GND | GND |
+
+
+| **Anode** | **Pin on board** |
+| :-: | :-: |
 | AN[0] | E15 |
 | AN[1] | E16 |
 | AN[2] | D15 |
 | AN[3] | C15 |
-| -- | -- |
-| VCC3V3 | 3V3 |
-| GND | GND |
-| -- | -- |
+
+
+| **Hall sensor connector** | **Pin on board** |
+| :-: | :-: |
 | Hall_sensor | U12 |
 | Hall_VCC | 3V3 |
 | Hall_GND | GND |
 
+
 ## VHDL modules description
 
-to be added
+### driver_7seg_4digits.vhd module code
+ 
+```vhdl
+------------------------------------------------------------------------
+-- Entity declaration for display driver
+------------------------------------------------------------------------
+entity driver_7seg_4digits is
+    port(
+        clk     : in  std_logic;                        -- main clock
+        reset   : in  std_logic;                        -- synchronous reset
+        dp_i    : in  std_logic_vector(4 - 1 downto 0); -- 4 bit value input for decimal point
+
+        decimal : in integer range 0 to 9999;           -- number to display
+
+        dp_o    : out std_logic;                        -- decimal point for specific digit
+        seg_o   : out std_logic_vector(7 - 1 downto 0); -- cathode output for individual segments
+        dig_o   : out std_logic_vector(4 - 1 downto 0)  -- common anode signals output to individual displays
+    );
+end entity driver_7seg_4digits;
+
+------------------------------------------------------------------------
+-- Architecture with signals declaration
+------------------------------------------------------------------------
+architecture Behavioral of driver_7seg_4digits is
+
+    signal s_en  : std_logic; -- internal clock enable
+    signal s_cnt : std_logic_vector(2 - 1 downto 0); -- internal 2-bit counter for multiplexing 4 digits
+
+    signal s_hex : integer range 0 to 9999; -- internal integer value for 7 segment decoder
+    signal s_decimal : integer range 0 to 9999; -- internal integer value for displaying digits
+    
+    signal buff     : integer:=0;
+    signal buff2    : integer:=0;
+    signal thousands : integer:=0; -- 
+    signal hundreds : integer:=0;
+    signal decimals : integer:=0;
+    signal ones     : integer:=0;
+    
+    signal s_data0_i : integer range 0 to 9999;
+    signal s_data1_i : integer range 0 to 9999;
+    signal s_data2_i : integer range 0 to 9999;
+    signal s_data3_i : integer range 0 to 9999;
+
+begin
+
+    s_decimal <= decimal;
+    
+    -- instance copy of clock_enable entity
+    clk_en0 : entity work.clock_enable
+        generic map(
+            g_MAX => 4
+        )
+        port map(
+            clk   => clk,
+            reset => reset,
+            ce_o  => s_en
+        );
+
+    -- instance copy of hex_7seg entity
+    hex2seg : entity work.hex_7seg
+        port map(
+            hex_i => s_hex,
+            seg_o => seg_o
+        );
+        
+    -- instance copy of cnt_up_down entity
+    bin_cnt0 : entity work.cnt_up_down
+        generic map(
+            g_CNT_WIDTH => 2
+       )
+        port map(
+            clk  => clk,
+            reset  => reset,
+            en_i  => s_en,
+            cnt_up_i  => '0',
+            cnt_o  => s_cnt
+        );
+
+------------------------------------------------------------------------
+-- Process p_mux_dec:
+-- s_decimal integer number split to digits
+-- writing digits to s_data and display them on 7 segment display using hex_7seg
+------------------------------------------------------------------------
+    p_mux_dec : process(clk, s_decimal)    
+    begin
+        if(buff2 /= s_decimal) then
+            buff2 <= s_decimal;
+            buff <= 0;
+        end if;
+
+        if(s_decimal >= (buff + 1000)) then
+            buff <= buff + 1000;
+            thousands <= thousands + 1;
+        elsif(s_decimal >= (buff + 100)) then 
+            buff <= buff + 100;
+            hundreds <= hundreds + 1;
+        elsif(s_decimal >= (buff + 10)) then 
+            buff <= buff + 10;
+            decimals <= decimals + 1;
+        elsif(s_decimal >= (buff + 1)) then 
+            buff <= buff + 1;
+            ones <= ones + 1;
+        end if;
+
+
+        
+        if(s_decimal = buff) then
+            -- write numbers to s_data
+            s_data3_i <= thousands;
+            s_data2_i <= hundreds;
+            s_data1_i <= decimals;
+            s_data0_i <= ones;
+            
+            -- clear buffer and digits
+            buff <= 0;
+            
+            thousands <= 0;
+            hundreds <= 0;
+            decimals <= 0;
+            ones <= 0;
+        end if;
+        
+    end process p_mux_dec;
+    
+--------------------------------------------------------------------
+-- Process p_mux:
+-- A combinational process that implements a multiplexer for
+-- selecting data for a single digit, a decimal point signal, and 
+-- switches the common anodes of each display.
+--------------------------------------------------------------------
+    p_mux : process(s_cnt, dp_i)
+    begin
+        case s_cnt is
+            when "11" =>
+                s_hex <= s_data3_i;
+                dp_o  <= dp_i(3);
+                dig_o <= "0111";
+
+            when "10" =>
+                s_hex <= s_data2_i;
+                dp_o  <= dp_i(2);
+                dig_o <= "1011";
+
+            when "01" =>
+                s_hex <= s_data1_i;
+                dp_o  <= dp_i(1);
+                dig_o <= "1101";
+
+            when others =>
+                s_hex <= s_data0_i;
+                dp_o  <= dp_i(0);
+                dig_o <= "1110";
+        end case;
+    end process p_mux;
+
+end architecture Behavioral;
+```
+
+## Simulation
+![7-SEG-SIM](Images/drivertb.png)
+
+### hall.vhd module code
+ 
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity hall is
+    port(
+            clk            : in std_logic;
+            hall_sensor    : in std_logic;
+            wheel_circuit  : in integer;
+            
+            mode_BTN       : in std_logic;
+            reset_BTN      : in std_logic;
+            
+            number  : out integer
+        );
+end hall;
+
+architecture Behavioral of hall is
+
+    signal s_reset  : std_logic;
+    signal s_run    : std_logic;
+    signal s_mode   : std_logic:='0';
+    
+    signal s_runtime  : integer;
+    signal speed      : integer:=0;
+    signal distance   : integer:=0;
+
+begin
+
+    time_stop : entity work.time_enable
+        port map(
+            runtime => s_runtime,
+            clk     => clk,
+            reset   => s_reset,
+            run     => s_run
+        );
+        
+    speed_calc : process(clk)
+    begin
+    
+        if (s_reset = '1') then 
+            s_reset <= '0';
+        end if;
+    
+        if (rising_edge(hall_sensor)) then
+            speed <= (wheel_circuit*1000) / (s_runtime + 1); 
+                 
+            s_reset <= '1';
+        end if;
+        
+    end process;
+    
+    dist_calc : process(clk, hall_sensor)
+    begin
+    
+        if (rising_edge(hall_sensor)) then
+        
+            distance <= distance + (wheel_circuit / 100);
+            
+        end if;
+        
+        if (rising_edge(reset_BTN)) then
+            distance <= 0;
+        end if;
+        
+    end process;
+    
+    view : process(clk)
+    begin
+    
+        if (rising_edge(mode_BTN)) then
+            s_mode <= not(s_mode);
+        end if;
+        
+        case s_mode is
+            when '0' =>
+                number <= speed;
+            when '1' =>
+                number <= distance;
+            when others =>
+                number <= speed;
+        end case;
+        
+    end process;
+
+end Behavioral;
+```
 
 ## TOP module description
 
-to be added
+**Block diagram of top module
+![BLOC-DIAGRAM-TOP](Images/hall_sensor.png)
+
+
+```vhdl 
+```
+
+### Simulation
+![TOP-SIM](Images/sim_2.png)
 
 ## Video
 
 [VIDEO PRESENTATION](youtube.com)
 
 ## References
-1. to be added
-2. to be added
+1. https://www.instructables.com/Basys3-Bicycle-Odometer/
+2. https://forum.digikey.com/t/7-segment-display-driver-for-multiple-digits-vhdl/12526
