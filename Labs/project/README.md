@@ -4,11 +4,13 @@
 
 Dziuina Valeriia -
 
-Fabulec Martin - https://github.com/Fabulec/Digital-electronics-1
+Fabulec Martin - https://github.com/Fabulec/Digital-electronics-2
 
-Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1 
+Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-3
 
 Frolka Jan - https://github.com/xfrolk03/Digital-electronics-1-2021
+
+Galovič Dominik - https://github.com/Dominik220888/Digital-electronics-1
 
 ## Project objectives
 
