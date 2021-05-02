@@ -4,7 +4,7 @@
 
 Dziuina Valeriia -
 
-Fabulec Martin - https://github.com/Fabulec/Digital-electronics-1
+Fabulec Martin - gg
 
 Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1
 
