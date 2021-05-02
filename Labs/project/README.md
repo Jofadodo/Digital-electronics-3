@@ -2,7 +2,7 @@
 
 ## Team members
 
-Dziuina Valeriia -
+Dziuina Valeriia - https://github.com/valdzyu/Digital-electronics-1
 
 Fabulec Martin - https://github.com/Fabulec/Digital-electronics-2
 
