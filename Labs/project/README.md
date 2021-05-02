@@ -47,7 +47,7 @@ For this project we are using clock enable with added north pole hall sensor ent
 ## VHDL modules description
 
 to be added
-
+lalala
 ## TOP module description
 
 to be added
