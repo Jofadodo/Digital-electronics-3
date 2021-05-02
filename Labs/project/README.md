@@ -323,7 +323,7 @@ end Behavioral;
 
 ![BLOC-DIAGRAM-TOP](Images/hall_sensor.png)
 
-
+### top.vhd module code
 ```vhdl 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
