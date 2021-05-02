@@ -13,11 +13,12 @@ Frolka Jan - https://github.com/xfrolk03/Digital-electronics-1-2021
 ## Project objectives
 
 Objective of this project is to use previous experience to implement the hall sensor to measure the speed and distance on the exercise bike
-and to use this implementation, so the console, which we will make, will show us the results, f.e. the distance traveled, or used speed.
+and to use this implementation, so the simulation will show us the results, f.e. the distance traveled, or used speed.
+We want to make a switch, so when you you use it, it will show distance or speed. We also want to divide value of distance/speed into four seven segment displays.
 
 ## Hardware description
 
-The project is implementable on Arty A7-35T board.
+The project is implementable on Arty A7-35T board, we are using modules from previous tutorials - clock enable, cnt_up_down, driver_7segment_4digits
 
 **Connections of 7 Segment Display**
 
@@ -506,7 +507,6 @@ begin
         );
 
 end architecture Behavioral;
-<<<<<<< HEAD
 ```
 
 ### tb_top vhdl code
@@ -682,8 +682,6 @@ begin
     end process p_stimulus;
 
 end Behavioral;
-=======
->>>>>>> 00bdd3d30142e4d72048a4f7b14ed42b5568a450
 ```
 
 ### Simulation
