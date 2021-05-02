@@ -328,7 +328,7 @@ end Behavioral;
 ```
 
 ### Simulation
-![TOP-SIM](Images/sim_2.png)
+![TOP-SIM](Images/sim_2.jpg)
 
 ## Video
 
