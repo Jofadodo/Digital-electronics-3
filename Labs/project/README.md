@@ -19,6 +19,18 @@ and to use this implementation, so the console, which we will make, will show us
 
 For this project we are using clock enable with added north pole hall sensor entity. The project is implementable on Arty A7-35T board.
 
+ ## Arty 
+ 
+# ![Screenshot od EDA Playground](Image/arty.png)
+
+# ![Screenshot od EDA Playground](Image/arty2.png)
+
+# ![Screenshot od EDA Playground](Image/artytab.png)
+
+## 
+# ![Screenshot od EDA Playground](Image/hall_sensor.png)
+
+
 **Table with connections on board**
 
 | **Connector** | **Pin** |
