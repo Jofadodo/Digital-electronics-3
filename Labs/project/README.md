@@ -6,7 +6,7 @@ Dziuina Valeriia -
 
 Fabulec Martin - gg
 
-Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1
+Fašanga Jozef - https://github.com/Jofadodo/Digital-electronics-1 bum bác
 
 Frolka Jan - https://github.com/xfrolk03/Digital-electronics-1-2021
 
