@@ -19,7 +19,7 @@ and to use this implementation, so the console, which we will make, will show us
 
 The project is implementable on Arty A7-35T board.
 
-**Connections of 7 Segment Display 
+**Connections of 7 Segment Display**
 
 ![7-SEG](Images/1.png)
 
@@ -319,7 +319,8 @@ end Behavioral;
 
 ## TOP module description
 
-**Block diagram of top module
+**Block diagram of top module**
+
 ![BLOC-DIAGRAM-TOP](Images/hall_sensor.png)
 
 
