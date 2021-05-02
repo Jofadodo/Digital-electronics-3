@@ -506,6 +506,7 @@ begin
         );
 
 end architecture Behavioral;
+<<<<<<< HEAD
 ```
 
 ### tb_top vhdl code
@@ -681,6 +682,8 @@ begin
     end process p_stimulus;
 
 end Behavioral;
+=======
+>>>>>>> 00bdd3d30142e4d72048a4f7b14ed42b5568a450
 ```
 
 ### Simulation
