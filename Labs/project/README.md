@@ -322,7 +322,7 @@ end architecture testbench;
 ```
 
 ## Simulation of driver
-![7-SEG-SIM](Images/drivertb.png)
+![7-SEG-SIM](Images/drivertb.jpg)
 
 ### hall.vhd module code
  
