@@ -19,7 +19,23 @@ and to use this implementation, so the console, which we will make, will show us
 
 The project is implementable on Arty A7-35T board.
 
+<<<<<<< HEAD
 **Connections of 7 Segment Display 
+=======
+ ## Arty 
+ 
+# ![Screenshot od EDA Playground](Image/arty.png)
+
+# ![Screenshot od EDA Playground](Image/arty2.png)
+
+# ![Screenshot od EDA Playground](Image/artytab.png)
+
+## 
+# ![Screenshot od EDA Playground](Image/hall_sensor.png)
+
+
+**Table with connections on board**
+>>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
 
 ![7-SEG](Images/1.png)
 
@@ -57,6 +73,7 @@ The project is implementable on Arty A7-35T board.
 
 ## VHDL modules description
 
+<<<<<<< HEAD
 ### driver_7seg_4digits.vhd module code
  
 ```vhdl
@@ -317,6 +334,10 @@ begin
 end Behavioral;
 ```
 
+=======
+to be added
+lalala
+>>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
 ## TOP module description
 
 **Block diagram of top module
@@ -334,5 +355,10 @@ end Behavioral;
 [VIDEO PRESENTATION](youtube.com)
 
 ## References
+<<<<<<< HEAD
 1. https://www.instructables.com/Basys3-Bicycle-Odometer/
 2. https://forum.digikey.com/t/7-segment-display-driver-for-multiple-digits-vhdl/12526
+=======
+1. to be added
+2. to be added
+>>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
