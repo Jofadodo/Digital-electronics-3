@@ -19,23 +19,7 @@ and to use this implementation, so the console, which we will make, will show us
 
 The project is implementable on Arty A7-35T board.
 
-<<<<<<< HEAD
-**Connections of 7 Segment Display 
-=======
- ## Arty 
- 
-# ![Screenshot od EDA Playground](Image/arty.png)
-
-# ![Screenshot od EDA Playground](Image/arty2.png)
-
-# ![Screenshot od EDA Playground](Image/artytab.png)
-
-## 
-# ![Screenshot od EDA Playground](Image/hall_sensor.png)
-
-
-**Table with connections on board**
->>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
+**Connections of 7 Segment Display**
 
 ![7-SEG](Images/1.png)
 
@@ -73,7 +57,6 @@ The project is implementable on Arty A7-35T board.
 
 ## VHDL modules description
 
-<<<<<<< HEAD
 ### driver_7seg_4digits.vhd module code
  
 ```vhdl
@@ -232,7 +215,113 @@ begin
 end architecture Behavioral;
 ```
 
-## Simulation
+
+## tb_driver_7seg_4digits code
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for testbench
+------------------------------------------------------------------------
+entity tb_driver_7seg_4digits is
+    -- Entity of testbench is always empty
+end entity tb_driver_7seg_4digits;
+
+------------------------------------------------------------------------
+-- Architecture body for testbench
+------------------------------------------------------------------------
+architecture testbench of tb_driver_7seg_4digits is
+
+    -- Local constants
+    constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
+
+    --Local signals
+    signal s_clk_100MHz : std_logic;
+    --- WRITE YOUR CODE HERE
+            
+    signal s_reset      : std_logic;
+    
+    signal s_dp_i       : std_logic_vector(4 - 1 downto 0);
+    signal s_dp_o       : std_logic;
+    signal s_seg_o      : std_logic_vector(7 - 1 downto 0);
+    
+    signal s_dig        : std_logic_vector(4 - 1 downto 0);
+    
+    signal s_decimal    : integer range 0 to 9999;
+    
+    
+
+begin
+    -- Connecting testbench signals with driver_7seg_4digits entity
+    -- (Unit Under Test)
+    --- WRITE YOUR CODE HERE
+        
+    uut_driver_7seg_4digits : entity work.driver_7seg_4digits
+        port map(
+            clk => s_clk_100MHz,
+            reset => s_reset,
+
+            dp_i => s_dp_i,
+
+            dp_o  => s_dp_o,
+            seg_o => s_seg_o,
+            dig_o => s_dig,
+            
+            decimal => s_decimal
+        );
+
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 5 ms loop         -- 75 periods of 100MHz clock
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_reset <= '0';
+        wait for 28 ns;
+        
+        -- Reset activated
+        s_reset <= '1';
+        wait for 53 ns;
+
+        s_reset <= '0';
+        wait;
+        
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        
+        s_decimal <= 2548;
+        s_dp_i <= "0010";
+        
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+end architecture testbench;
+```
+
+## Simulation of driver
 ![7-SEG-SIM](Images/drivertb.png)
 
 ### hall.vhd module code
@@ -334,31 +423,273 @@ begin
 end Behavioral;
 ```
 
-=======
-to be added
-lalala
->>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
 ## TOP module description
 
-**Block diagram of top module
+**Block diagram of top module**
+
 ![BLOC-DIAGRAM-TOP](Images/hall_sensor.png)
 
-
+### top.vhd module code
 ```vhdl 
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity top is
+Port ( 
+    
+           CLK100MHZ   : in STD_LOGIC;
+           BTN0        : in STD_LOGIC;
+           BTN1        : in STD_LOGIC;
+           BTN2        : in STD_LOGIC;
+           hall        : in STD_LOGIC;
+           
+           CA          : out STD_LOGIC;
+           CB          : out STD_LOGIC;
+           CC          : out STD_LOGIC;
+           CD          : out STD_LOGIC;
+           CE          : out STD_LOGIC;
+           CF          : out STD_LOGIC;
+           CG          : out STD_LOGIC;
+           
+           DP          : out STD_LOGIC;
+           
+           AN          : out STD_LOGIC_VECTOR (4 - 1 downto 0)
+           
+    );
+end top;
+
+architecture Behavioral of top is
+
+    signal s_decimal : integer;
+
+begin        
+    driver_seg_4 : entity work.driver_7seg_4digits
+        port map(
+            clk        => CLK100MHZ,
+            reset      => BTN2,
+
+            decimal => s_decimal,
+
+            dp_i => "1110",
+            dp_o => DP,
+            
+            seg_o(6) => CA,
+            seg_o(5) => CB,
+            seg_o(4) => CC,
+            seg_o(3) => CD,
+            seg_o(2) => CE,
+            seg_o(1) => CF,
+            seg_o(0) => CG,
+            
+            dig_o => AN(4 - 1 downto 0)
+        );
+        
+    hall_sensor : entity work.hall
+        port map(
+            clk            => CLK100MHZ,
+            hall_sensor    => hall,
+            wheel_circuit  => 2200,
+            mode_BTN       => BTN0,
+            reset_BTN      => BTN1,
+            
+
+            number         => s_decimal
+        );
+
+end architecture Behavioral;
+```
+
+### tb_top vhdl code
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tb_top is
+--  Port ( );
+end tb_top;
+
+architecture Behavioral of tb_top is
+
+    -- Local constants
+    constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
+
+    --Local signals
+    signal s_clk_100MHz : std_logic;
+    --- WRITE YOUR CODE HERE
+            
+    signal s_reset      : std_logic;
+    signal s_mode       : std_logic;
+    signal s_reset_dist : std_logic;
+    
+    signal s_dp_i       : std_logic_vector(4 - 1 downto 0);
+    signal s_dp_o       : std_logic;
+    signal s_seg_o      : std_logic_vector(7 - 1 downto 0);
+    
+    signal s_dig        : std_logic_vector(4 - 1 downto 0);
+    
+    signal s_decimal    : integer range 0 to 9999;
+    
+    signal s_hall      : std_logic;
+
+begin
+
+    uut_driver_7seg_4digits : entity work.driver_7seg_4digits
+        port map(
+            clk => s_clk_100MHz,
+            reset => s_reset,
+
+            dp_i => "1110",
+
+            dp_o  => s_dp_o,
+            seg_o => s_seg_o,
+            dig_o => s_dig,
+            
+            decimal => s_decimal
+        );
+        
+    uut_hall : entity work.hall
+        port map(
+            clk => s_clk_100MHz,
+            
+            hall_sensor   => s_hall,
+            wheel_circuit => 2200,
+            mode_BTN      => s_mode,
+            reset_BTN     => s_reset_dist,
+            
+            number => s_decimal
+        );
+
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 2000 ms loop         -- 75 periods of 100MHz clock
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_reset <= '0';
+        wait for 28 ns;
+        
+        -- Reset activated
+        s_reset <= '1';
+        wait for 53 ns;
+
+        s_reset <= '0';
+        wait;
+        
+    end process p_reset_gen;
+    
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        
+        s_hall <= '0';
+        s_mode <= '0';
+        s_reset_dist <= '0';
+        wait for 10 ns;
+
+        while(now < 50 ms) loop
+            
+            s_hall <= '1';
+            wait for 30 ns;
+            s_hall <= '0';
+            wait for 3 ms;
+            
+        end loop; 
+        
+        s_mode <= '1';
+        wait for 10 ns;
+        s_mode <= '0';
+        
+        while(now < 100 ms) loop
+            
+            s_hall <= '1';
+            wait for 30 ns;
+            s_hall <= '0';
+            wait for 6 ms;
+            
+        end loop; 
+        
+        s_mode <= '1';
+        wait for 10 ns;
+        s_mode <= '0';
+        
+        while(now < 150 ms) loop
+            
+            s_hall <= '1';
+            wait for 30 ns;
+            s_hall <= '0';
+            wait for 5 ms;
+            
+        end loop;
+        
+        s_reset_dist <= '1';
+        wait for 10 ns;
+        s_reset_dist <= '0';
+        
+        while(now < 200 ms) loop
+            
+            s_hall <= '1';
+            wait for 30 ns;
+            s_hall <= '0';
+            wait for 4 ms;
+            
+        end loop;
+        
+        s_hall <= '1';
+        wait for 30 ns;
+        s_hall <= '0';
+        wait for 10 ms;
+        
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+
+end Behavioral;
 ```
 
 ### Simulation
-![TOP-SIM](Images/sim_2.png)
+![TOP-SIM](Images/sim_2.jpg)
 
 ## Video
 
 [VIDEO PRESENTATION](youtube.com)
 
 ## References
-<<<<<<< HEAD
 1. https://www.instructables.com/Basys3-Bicycle-Odometer/
 2. https://forum.digikey.com/t/7-segment-display-driver-for-multiple-digits-vhdl/12526
-=======
-1. to be added
-2. to be added
->>>>>>> f8863e1914617e7526bf356c490afe52c0455af4
