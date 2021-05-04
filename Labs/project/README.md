@@ -16,11 +16,11 @@ Galovič Dominik - https://github.com/Dominik220888/Digital-electronics-1
 
 Objective of this project is to use previous experience to implement the hall sensor to measure the speed and distance on the exercise bike
 and to use this implementation, so the simulation will show us the results, f.e. the distance traveled, or used speed.
-We want to make a switch, so when you you use it, it will show distance or speed. We also want to divide value of distance/speed into four seven segment displays and make button for setting a wheel circuit
+We want to make a switch, so when you you use it, it will show distance or speed. We also want to divide value of distance/speed into four seven segment displays and use button for setting a wheel circuit.
 
 ## Hardware description
 
-The project is implementable on Arty A7-35T board, we are using modules from previous tutorials - clock enable, cnt_up_down, driver_7segment_4digits
+The project is implementable on Arty A7-35T board, we are using hall sensor and modules from previous tutorials - clock enable, hex_7seg, cnt_up_down, driver_7segment_4digits
 
 **Connections of 7 Segment Display**
 
