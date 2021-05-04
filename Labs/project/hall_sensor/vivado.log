@@ -18,3 +18,7 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+update_compile_order -fileset sources_1
+file copy -force C:/Dominik/Digital-electronics-1/Labs/project/hall_sensor/hall_sensor.runs/impl_1/top.bit C:/Dominik/Digital-electronics-1/Labs/project/hall_sensor/bistream.bit
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue May  4 15:07:13 2021...

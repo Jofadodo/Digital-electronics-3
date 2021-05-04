@@ -11,3 +11,5 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Dominik/Digital-electronics-1/Labs/project/hall_sensor/hall_sensor.xpr
+update_compile_order -fileset sources_1
+file copy -force C:/Dominik/Digital-electronics-1/Labs/project/hall_sensor/hall_sensor.runs/impl_1/top.bit C:/Dominik/Digital-electronics-1/Labs/project/hall_sensor/bistream.bit
