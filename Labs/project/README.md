@@ -16,7 +16,7 @@ Galovič Dominik - https://github.com/Dominik220888/Digital-electronics-1
 
 Objective of this project is to use previous experience to implement the hall sensor to measure the speed and distance on the exercise bike
 and to use this implementation, so the simulation will show us the results, f.e. the distance traveled, or used speed.
-We want to make a switch, so when you you use it, it will show distance or speed. We also want to divide value of distance/speed into four seven segment displays.
+We want to make a switch, so when you you use it, it will show distance or speed. We also want to divide value of distance/speed into four seven segment displays and make button for setting a wheel circuit
 
 ## Hardware description
 
