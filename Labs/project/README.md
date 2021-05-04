@@ -691,7 +691,7 @@ end Behavioral;
 
 ## Video
 
-[VIDEO PRESENTATION](youtube.com)
+[VIDEO PRESENTATION](https://www.youtube.com/watch?v=bGpUqRCeRC4)
 
 ## References
 1. https://www.instructables.com/Basys3-Bicycle-Odometer/
